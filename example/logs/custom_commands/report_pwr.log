@@ -1,0 +1,48 @@
+$ ../pivpav/benchmark/reports/report_pwr.tcl ./sub_wrapper.pwr 
+  1.                     t_p                 1237.00
+  2.                  vint_t                  "1.20"
+  3.                  vint_i                "526.46"
+  4.                  vint_p                "631.75"
+  5.                  vaux_t                  "2.50"
+  6.                  vaux_i                "240.35"
+  7.                  vaux_p                "600.87"
+  8.                  vo25_t                  "2.50"
+  9.                  vo25_i                  "1.75"
+ 10.                  vo25_p                  "4.38"
+ 11.                   clk_t                 "19.40"
+ 12.                   dcm_t                  "0.00"
+ 13.                    io_t                "355.95"
+ 14.                 logic_t                  "0.00"
+ 15.               signals_t                  "0.00"
+ 16.                q_vint_t                  "1.20"
+ 17.                q_vint_i                "510.23"
+ 18.                q_vint_p                "612.28"
+ 19.                q_vaux_t                  "2.50"
+ 20.                q_vaux_i                "240.35"
+ 21.                q_vaux_p                "600.87"
+ 22.                q_vo25_t                  "2.50"
+ 23.                q_vo25_i                  "1.75"
+ 24.                q_vo25_p                  "4.38"
+ 25.               junc_temp                    "57"
+ 26.            ambient_temp                    "50"
+ 27.               case_temp                    "57"
+ 28.                 theta_p                       6
+
+$ ../pivpav/benchmark/reports/report_pwr.tcl -s ./sub_wrapper.pwr 
+INSERT INTO power (
+                   t_p,                vint_t,                vint_i,                vint_p,                vaux_t,
+                vaux_t,                vaux_i,                vaux_p,                vo25_t,                vo25_i,
+                vo25_i,                vo25_p,                 clk_t,                 dcm_t,                  io_t,
+                  io_t,               logic_t,             signals_t,              q_vint_t,              q_vint_i,
+              q_vint_i,              q_vint_p,              q_vaux_t,              q_vaux_i,              q_vaux_p,
+              q_vaux_p,              q_vo25_t,              q_vo25_i,              q_vo25_p,             junc_temp,
+             junc_temp,          ambient_temp,             case_temp,               theta_p 
+) VALUES(
+               1237.00,                "1.20",              "526.46",              "631.75",                "2.50",
+                "2.50",              "240.35",              "600.87",                "2.50",                "1.75",
+                "1.75",                "4.38",               "19.40",                "0.00",              "355.95",
+              "355.95",                "0.00",                "0.00",                "1.20",              "510.23",
+              "510.23",              "612.28",                "2.50",              "240.35",              "600.87",
+              "600.87",                "2.50",                "1.75",                "4.38",                  "57",
+                  "57",                  "50",                  "57",                     6 
+);

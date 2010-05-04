@@ -1,0 +1,9 @@
+mgrad@clowertown1 ~/Work/fccm/example
+$ cat ../pivpav/library/data/create_view.sql | sqlite3 gen_output/pivpav.db
+
+
+mgrad@clowertown1 ~/Work/fccm/example
+$ echo "select * from d;" | sqlite3 gen_output/pivpav.db 
+cir_key     cir_entity_name  cdt_name    cp_latency  cp_inputs_rate  m_goal                 round(power.t_p,1)  MHz after PAR  n_ff        n_lut       n_slice     n_io_buf    n_i_l       n_o_logic 
+----------  ---------------  ----------  ----------  --------------  ---------------------  ------------------  -------------  ----------  ----------  ----------  ----------  ----------  ----------
+1           add              int32       1           0               timing_with_phys_synt  893.6               283.2          66.0        3.0         2.0         69.0        8.0         3.0   

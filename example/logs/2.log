@@ -1,0 +1,38 @@
+mgrad@clowertown1 ~/Work/fccm/example
+$ ../pivpav/factory/gen_coregen.tcl add
+# ======================================================================================= #
+# Project directory
+# ======================================================================================= #
+* Creating directory                       ../pivpav/factory/../../example/gen_output/_db_circuits/add
+
+# ======================================================================================= #
+# XCO configuration
+# ======================================================================================= #
+* Load parser:                             ../pivpav/factory/../factory/gen_coregen/lib/xco_parser.tcl
+* Load mapper:                             ../pivpav/factory/../factory/gen_coregen/xco_maps/add.tcl
+* Generate with:                           ../pivpav/factory/../factory/gen_coregen/add.tcl
+* Parse xco configuration                 
+
+# ======================================================================================= #
+# Generating circuit
+# ======================================================================================= #
+* Elapsed time:                            24.872 sec
+
+# ======================================================================================= #
+# Parsing the top entity of the circuit
+# ======================================================================================= #
+* Parsing vhdl:                            ../pivpav/factory/../../example/gen_output/_db_circuits/add/compile/add.vhd
+* Detecting configuration of the ports 
+           name | isIn |                           type | size |  clk |   ce |  rst |        val | cons | sign | unsign |   fp |  exp |  fra |  reg
+               a |    1 |  std_logic_VECTOR(31 downto 0) |   32 |    0 |    0 |    0 |            |    0 |    1 |    0 |    0 |    0 |    0 |    0
+               b |    1 |  std_logic_VECTOR(31 downto 0) |   32 |    0 |    0 |    0 |            |    0 |    1 |    0 |    0 |    0 |    0 |    0
+             clk |    1 |                      std_logic |    1 |    1 |    0 |    0 |            |    0 |    0 |    0 |    0 |    0 |    0 |    0
+            c_in |    1 |                      std_logic |    1 |    0 |    0 |    0 |            |    0 |    0 |    0 |    0 |    0 |    0 |    0
+              ce |    1 |                      std_logic |    1 |    0 |    1 |    0 |            |    0 |    0 |    0 |    0 |    0 |    0 |    0
+               s |    0 |  std_logic_VECTOR(31 downto 0) |   32 |    0 |    0 |    0 |            |    0 |    1 |    0 |    0 |    0 |    0 |    1
+
+# ======================================================================================= #
+# Storing to database
+# ======================================================================================= #
+* Storing into db component: add
+* Success, circuit rowid=1

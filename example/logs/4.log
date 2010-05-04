@@ -1,0 +1,63 @@
+mgrad@clowertown1 ~/Work/fccm/example
+$ ../pivpav/benchmark/reports/report_pwr.tcl ./gen_output/_db_circuits/ise/*.pwr
+  1.                     t_p                  893.62
+  2.                  vint_t                  "1.20"
+  3.                  vint_i                "500.37"
+  4.                  vint_p                "600.45"
+  5.                  vaux_t                  "2.50"
+  6.                  vaux_i                "115.52"
+  7.                  vaux_p                "288.80"
+  8.                  vo25_t                  "2.50"
+  9.                  vo25_i                  "1.75"
+ 10.                  vo25_p                  "4.38"
+ 11.                   clk_t                  "7.06"
+ 12.                   dcm_t                  "0.00"
+ 13.                    io_t                 "43.87"
+ 14.                 logic_t                  "0.00"
+ 15.               signals_t                  "0.00"
+ 16.                q_vint_t                  "1.20"
+ 17.                q_vint_i                "494.43"
+ 18.                q_vint_p                "593.31"
+ 19.                q_vaux_t                  "2.50"
+ 20.                q_vaux_i                "115.52"
+ 21.                q_vaux_p                "288.80"
+ 22.                q_vo25_t                  "2.50"
+ 23.                q_vo25_i                  "1.75"
+ 24.                q_vo25_p                  "4.38"
+ 25.               junc_temp                    "55"
+ 26.            ambient_temp                    "50"
+ 27.               case_temp                    "55"
+ 28.                 theta_p                       6
+
+
+mgrad@clowertown1 ~/Work/fccm/example
+$ ../pivpav/benchmark/reports/report_pwr.tcl -s ./gen_output/_db_circuits/ise/*.pwr
+INSERT INTO power (
+                   t_p,                vint_t,                vint_i,                vint_p,                vaux_t,
+                vaux_t,                vaux_i,                vaux_p,                vo25_t,                vo25_i,
+                vo25_i,                vo25_p,                 clk_t,                 dcm_t,                  io_t,
+                  io_t,               logic_t,             signals_t,              q_vint_t,              q_vint_i,
+              q_vint_i,              q_vint_p,              q_vaux_t,              q_vaux_i,              q_vaux_p,
+              q_vaux_p,              q_vo25_t,              q_vo25_i,              q_vo25_p,             junc_temp,
+             junc_temp,          ambient_temp,             case_temp,               theta_p 
+) VALUES(
+                893.62,                "1.20",              "500.37",              "600.45",                "2.50",
+                "2.50",              "115.52",              "288.80",                "2.50",                "1.75",
+                "1.75",                "4.38",                "7.06",                "0.00",               "43.87",
+               "43.87",                "0.00",                "0.00",                "1.20",              "494.43",
+              "494.43",              "593.31",                "2.50",              "115.52",              "288.80",
+              "288.80",                "2.50",                "1.75",                "4.38",                  "55",
+                  "55",                  "50",                  "55",                     6 
+);
+
+
+
+mgrad@clowertown1 ~/Work/fccm/example
+$ ../pivpav/library/insert-reports.tcl -db gen_output/pivpav.db -m_id 1 gen_output/_db_circuits/ise
+
+mgrad@clowertown1 ~/Work/fccm/example
+$ ../pivpav/library/insert-reports.tcl -db /dev/null -m_id 1 -f logs/4.log_res gen_output/_db_circuits/ise
+
+
+
+

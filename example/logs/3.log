@@ -1,0 +1,51 @@
+mgrad@clowertown1 ~/Work/fccm/example
+$ ../pivpav/benchmark/bench.tcl 1 > logs/3.log
+
+# ======================================================================================= #
+* Creating directory:                               (recreated) /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits
+# ======================================================================================= #
+* Creating wrapped design                           
+	       Command:  /scratch/mgrad/Work/fccm/pivpav/bin/wrapper -d /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/pivpav.db -x 1 -r -n 25 -u /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/top.ucf > /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/top.vhd 
+	     Generated:  /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/top.ucf (25 ns) /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/top.vhd
+# ======================================================================================= #
+* Extracting files from DB                          
+	       Command:  ../pivpav/benchmark/../library/extract_scripts/extract-circuit.tcl -d /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/pivpav.db 1
+	      Extacted:  /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/add.ngc (size:54330)
+# ======================================================================================= #
+* Design compilation                                
+	       Command:  /scratch/mgrad/Work/fccm/pivpav/benchmark/ise.tcl -dir /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/ise -goal timing_with_phys_synt -logfile /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/ise.log /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/top.vhd /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/top.ucf /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/add.ngc
+* Creating directory                       /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/ise
+* Logfile:                                 /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/ise.log
+* Changing directory to:                   /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/ise
+* Creating new ISE project:                /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/ise/proj.ise
+* Property 'family'                        = 'Virtex4'
+* Property 'device'                        = 'XC4VFX100'
+* Property 'package'                       = 'FF1152'
+* Property 'speed'                         = '-10'
+* Property 'top_level_module_type'         = 'HDL'
+* Property 'synthesis_tool'                = 'XST (VHDL/Verilog)'
+* Property 'simulator'                     = 'Modelsim-SE Mixed'
+* Property 'Preferred Language'            = 'VHDL'
+* Property 'Enable Message Filtering'      = 'false'
+* Property 'Display Incremental Messages'  = 'false'
+* Adding file to project:                  /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/top.vhd
+* Adding file to project:                  /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/top.ucf
+* Adding file to project:                  /scratch/mgrad/Work/fccm/pivpav/../example/gen_output/_db_circuits/add.ngc
+* Saving and reopening project            
+* Design goal                              timing_with_phys_synt
+* [1/6] task:                              Check Syntax
+INFO:TclTasksC:1850 - process run : Check Syntax is done.
+* [2/6] task:                              Synthesize - XST
+INFO:TclTasksC:1850 - process run : Synthesize - XST is done.
+* [3/6] task:                              Translate
+INFO:TclTasksC:1850 - process run : Translate is done.
+* [4/6] task:                              Map
+INFO:TclTasksC:1850 - process run : Map is done.
+* [5/6] task:                              Place & Route
+INFO:TclTasksC:1850 - process run : Place & Route is done.
+* [6/6] task:                              Generate Power Data
+INFO:TclTasksC:1850 - process run : Generate Power Data is done.
+
+$ ../pivpav/library/insert-measure.tcl -db gen_output/pivpav.db gen_output/_db_circuits/measure_db_store.txt
+Success. Circuit ROWID = 1
+

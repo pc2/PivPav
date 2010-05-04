@@ -1,0 +1,106 @@
+-- The CXX compiler identification is GNU
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+# Creating Makefile for 'WRAPPER'
+
+BASE SETTINGS:  -I/opt/pc2_amd64/llvm/llvm-2.6.debug/include -I/scratch/mgrad/llvm/build-llvm-2.6/include -L/opt/pc2_amd64/llvm/llvm-2.6.debug/lib -I/home/mgrad/tools/include -L/home/mgrad/tools/lib -I/opt/pc2_amd64/llvm/llvm-2.6.debug/include -I/scratch/mgrad/llvm/build-llvm-2.6/include -L/opt/pc2_amd64/llvm/llvm-2.6.debug/lib -I/home/mgrad/tools/include -L/home/mgrad/tools/lib 
+SELECTED BUILD TYPE:   RelWithDebInfo
+This will be added to the base settings
+BUILD TYPE SETTINGS:   CMAKE_CXX_FLAGS_RELWITHDEBINFO = -O2 -g
+
+# Creating Makefile for 'UTILS'
+# Creating Makefile for 'HW_WRITE'
+# Creating Makefile for 'SQLITE'
+# Creating Makefile for 'UTILS'
+# Creating Makefile for 'getOperator'
+# Creating Makefile for 'UTILS'
+# Creating Makefile for 'HW_WRITE'
+# Creating Makefile for 'SQLITE'
+# Creating Makefile for 'UTILS'
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/mgrad/Work/fccm/api/wrapper/build
+Scanning dependencies of target libwrapper
+[  4%] Building CXX object CMakeFiles/libwrapper.dir/libwrapper.cc.o
+Linking CXX shared library libwrapper.so
+[  4%] Built target libwrapper
+Scanning dependencies of target libgetOperator
+[  9%] Building CXX object getOperator/CMakeFiles/libgetOperator.dir/libgetOperator.cc.o
+Linking CXX shared library libgetOperator.so
+[  9%] Built target libgetOperator
+Scanning dependencies of target libhw_write
+[ 13%] Building CXX object getOperator/hw_write/CMakeFiles/libhw_write.dir/Operator.cpp.o
+[ 18%] Building CXX object getOperator/hw_write/CMakeFiles/libhw_write.dir/Signal.cpp.o
+Linking CXX shared library libhw_write.so
+[ 18%] Built target libhw_write
+Scanning dependencies of target libsql
+[ 22%] Building CXX object getOperator/sqlite-c/CMakeFiles/libsql.dir/libsql.cc.o
+Linking CXX shared library libsql.so
+[ 22%] Built target libsql
+Scanning dependencies of target libutils
+[ 27%] Building CXX object getOperator/sqlite-c/utils/CMakeFiles/libutils.dir/libutils.o
+Linking CXX shared library libutils.so
+[ 27%] Built target libutils
+Scanning dependencies of target wrapper
+[ 31%] Building CXX object CMakeFiles/wrapper.dir/main.cc.o
+Linking CXX executable wrapper
+[ 31%] Built target wrapper
+Scanning dependencies of target libutils
+[ 36%] Building CXX object utils/CMakeFiles/libutils.dir/libutils.o
+Linking CXX shared library libutils.so
+[ 36%] Built target libutils
+Scanning dependencies of target test_utils
+[ 40%] Building CXX object utils/CMakeFiles/test_utils.dir/main.o
+Linking CXX executable test_utils
+[ 40%] Built target test_utils
+Scanning dependencies of target libhw_write
+[ 45%] Building CXX object hw_write/CMakeFiles/libhw_write.dir/Operator.cpp.o
+[ 50%] Building CXX object hw_write/CMakeFiles/libhw_write.dir/Signal.cpp.o
+Linking CXX shared library libhw_write.so
+[ 50%] Built target libhw_write
+Scanning dependencies of target test_hw_write
+[ 54%] Building CXX object hw_write/CMakeFiles/test_hw_write.dir/main.cc.o
+Linking CXX executable test_hw_write
+[ 54%] Built target test_hw_write
+Scanning dependencies of target libsql
+[ 59%] Building CXX object sqlite-c/CMakeFiles/libsql.dir/libsql.cc.o
+Linking CXX shared library libsql.so
+[ 59%] Built target libsql
+Scanning dependencies of target test_sql
+[ 63%] Building CXX object sqlite-c/CMakeFiles/test_sql.dir/main.cc.o
+Linking CXX executable test_sql
+[ 63%] Built target test_sql
+Scanning dependencies of target test_getOperator
+[ 68%] Building CXX object getOperator/CMakeFiles/test_getOperator.dir/main.cc.o
+Linking CXX executable test_getOperator
+[ 68%] Built target test_getOperator
+Scanning dependencies of target libutils
+[ 72%] Building CXX object sqlite-c/utils/CMakeFiles/libutils.dir/libutils.o
+Linking CXX shared library libutils.so
+[ 72%] Built target libutils
+Scanning dependencies of target test_utils
+[ 77%] Building CXX object sqlite-c/utils/CMakeFiles/test_utils.dir/main.o
+Linking CXX executable test_utils
+[ 77%] Built target test_utils
+Scanning dependencies of target libutils
+[ 81%] Building CXX object getOperator/utils/CMakeFiles/libutils.dir/libutils.o
+Linking CXX shared library libutils.so
+[ 81%] Built target libutils
+Scanning dependencies of target test_utils
+[ 86%] Building CXX object getOperator/utils/CMakeFiles/test_utils.dir/main.o
+Linking CXX executable test_utils
+[ 86%] Built target test_utils
+Scanning dependencies of target test_hw_write
+[ 90%] Building CXX object getOperator/hw_write/CMakeFiles/test_hw_write.dir/main.cc.o
+Linking CXX executable test_hw_write
+[ 90%] Built target test_hw_write
+Scanning dependencies of target test_sql
+[ 95%] Building CXX object getOperator/sqlite-c/CMakeFiles/test_sql.dir/main.cc.o
+Linking CXX executable test_sql
+[ 95%] Built target test_sql
+Scanning dependencies of target test_utils
+[100%] Building CXX object getOperator/sqlite-c/utils/CMakeFiles/test_utils.dir/main.o
+Linking CXX executable test_utils
+[100%] Built target test_utils

@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <title>Tiny PivPav documentation</title>
+  <meta content="Mariusz Grad" name="author">
+  <meta content="we will make it BIG! :)" name="description">
+</head>
+
+
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div style="text-align: center;">
+<pre><big><big><big>Tiny PivPav documentation</big></big></big></pre>
+
+
+
+
+</div>
+
+
+
+
+
+<hr style="width: 100%; height: 2px;"><br>
+
+To start&nbsp; using the&nbsp;PivPav fast check the&nbsp;<a href="../example">&nbsp;example/</a> directory and read the <a href="../example/README.txt">README.txt</a> file.<br>
+There are commands which show the flow of the PivPav.<br>
+You will be mostly interested in the <a href="../example/logs">logs/</a> because there you will find the output from the commands and you will see what they do.<br>
+In addition check the <a href="../example/gen_output/">gen_output/</a> directory where data are stored from these commands.<br>
+You will find there &nbsp;also simple PivPav circuit library under the <a href="../example/gen_output/pivpav.db">pivpav.db</a> name.<br>
+<br>
+These infos should give you good kick into the PivPav.<br>
+<br>
+
+<hr style="width: 100%; height: 2px;">
+<pre><big><span style="font-weight: bold;"><span style="font-family: monospace;"><span style="font-family: mon;">The PivPav configuration</span></span>:<br><br></span></big>Location: 	<a href="../pivpav/_conf.tcl">pivpav/_conf.tcl</a><br>Description:	This is main configuration, which keeps all necessary settings for PivPav to run. When sourced it does two important things.<br>		1. it searches for the variables name which ends on (_file) and (_dir). <br>		   For these it creates the variables which add (_full) suffix and the values is changed to represent the full path.<br>			Example <br>			# ---  ::CONFIG::report_trc_file       = reports/report_trc.tcl<br>			# ---  ::CONFIG::report_trc_file_full  = /scratch/mgrad/Work/pivpav/benchmark/reports/report_trc.tcl<br><br>		   This allows to later reference to the ${::CONFIG::report_trc_file_full} and do not mess up with the directories.<br><br>		2. it automatically creates the _conf.sh with the same settings as for _conf.tcl. <br>		   This is used for the Bash scripts to obtain the same configuration as for the TCL.<br><br><big><span style="font-weight: bold;"><span style="font-family: monospace;"><span style="font-family: mon;">The PivPav installation</span></span>:<br></span></big>Location: 	<a href="../pivpav/README.txt">pivpav/README.txt</a><br></pre>
+<hr style="width: 100%; height: 2px;">
+We have three&nbsp;main parts from which the PivPav is built. These are:<br>
+
+<pre><big><span style="font-weight: bold;"><span style="font-family: monospace;">Circuit factory</span>:<br></span></big><br>Location: 	<a href="../pivpav/factory">pivpav/factory</a><br>Description: 	Tools to generate various circuits from Coregen and FloPoCo generators. <br>		In addition they allow to add custom circuits to the library.<br>Main tools:     <span style="font-family: monospace; color: rgb(0, 0, 0);"><a style="color: rgb(255, 0, 0);" href="../pivpav/factory/gen_coregen.tcl">gen_coregen.tcl</a>  ; <a style="color: rgb(255, 0, 0);" href="../pivpav/factory/gen_flopoco.sh">gen_flopoco.sh</a> ; <a style="color: rgb(255, 0, 0);" href="../pivpav/factory/addCustomCircuit.tcl">addCustomCircuit.tcl</a></span><br>More info:      <a href="../pivpav/factory/README.txt"><span style="text-decoration: underline;">pivpav/factory/README.txt</span></a><br>Example usage:  <a href="../example/logs/2.log">example/logs/2.log</a><br><big><span style="font-weight: bold;"><span style="font-family: monospace;"><br><br>Benchmarking the circuits</span>:<br></span></big><br>Location: 	<a href="../pivpav/benchmark">pivpav/benchmark</a><br>Description: 	These tools benchmark given circuit. In order to do that, they create the VHDL design, then design project under the Xilinx ISE FPGA CAD tool flow, <br>		they setup design goal of the tool flow, run the tool flow and watch for any errors and warnings, finally they gather<br>		informations about measured circuit from the log files.<br>Main tools:     <a href="../pivpav/benchmark/bench.tcl"><span style="color: rgb(255, 0, 0);">bench.tcl</span></a>	- used to create the VHDL design, extract necessary files from db if needed, wrap them if necessary, give control to the ./ise.tcl script, parse log files<br>		<a href="../pivpav/benchmark/ise.tcl"><span style="color: rgb(255, 0, 0);">ise.tcl</span></a>		- used to control &amp; setup &amp; run the Xilinx ISE FPGA CAD tool flow<br>More info:      <a href="../pivpav/benchmark/README.txt"><span style="text-decoration: underline;">pivpav/benchmark/README.txt</span></a><br>Example usage:  <a href="../example/logs/3.log">example/logs/3.log</a><br><br><big><span style="font-weight: bold;"><span style="font-family: monospace;"><span style="font-family: mon;"><br><br>Circuit library</span></span>:<br><br></span></big>Location: 	<a href="../pivpav/library">pivpav/library</a><br>Description: 	The place where all circuits and informations about them are stored.<br>		The directory contains necessary tools to create the library (schema) in an automated way (it has to be built because the structure changes based on the metadata informations),<br>		then it contains tools which allow to insert and extract circuits, reports, files etc. In other words everything concerning the library is located in here.<br>Main tools:     <span style="color: rgb(255, 102, 102);"><span style="color: rgb(255, 0, 0);"><a style="color: rgb(255, 0, 0);" href="../pivpav/library/create-schema.tcl">create-schema.tcl</a>  ; <a style="color: rgb(255, 0, 0);" href="../pivpav/library/insert-circuit.tcl">insert-circuit.tcl</a> ; <a style="color: rgb(255, 0, 0);" href="../pivpav/library/insert-measure.tcl">insert-measure.tcl</a> ; <a style="color: rgb(255, 0, 0);" href="../pivpav/library/insert-reports.tcl">insert-reports.tcl</a></span> </span><br>More info:      <a href="../pivpav/library/README.txt">pivpav/library/README.txt</a><br>Example usage:  <a href="../example/logs/1.log">example/logs/1.log</a>  ; <a href="../example/logs/custom_commands/create_schema.log">example/logs/custom_commands/create_schema.tcl<br></a><br></pre>
+
+<hr style="width: 100%; height: 2px;">
+
+<hr style="width: 100%; height: 2px;">
+<pre><big><span style="font-weight: bold;"></span></big><big><span style="font-weight: bold;"><span style="font-family: monospace;"><span style="font-family: mon;">Running everything</span></span> together:<br><br></span></big>Location: 	<a href="../pivpav/fill-library">pivpav/fill-library</a><br>Description:	Tools in that directory were used to built up the final library containing all circuits from the factory and measured with the benchmarking facilities for each design goal.<br>		Overall that was more than 36k designs.<br>		The scripts are written with the help of <span style="color: rgb(255, 0, 0);">libmanager.sh</span>. They allowed to use 24 CPUs with 128 GB RAM simultaneously to generate the library.<br>Main tools: 	<span style="color: rgb(255, 0, 0);"><a style="color: rgb(255, 0, 0);" href="../pivpav/fill-library/libmanager.sh">libmanager.sh</a> ;  <a style="color: rgb(255, 0, 0);" href="../pivpav/fill-library/2_fill_coregen.sh">2_fill_coregen.sh </a>  </span> <br><br></pre>
+
+<hr style="width: 100%; height: 2px;">
+<pre><big><span style="font-weight: bold;"></span></big><big><span style="font-weight: bold;"><span style="font-family: monospace;"><span style="font-family: mon;">API</span></span> usage example:<br></span></big><big><span style="font-weight: bold;"><br></span></big>Location: 	<a href="../api">api</a><br>Description:	The API libraries for the PivPav together with sample wrapper application.<br>Main tools: 	<span style="color: rgb(255, 0, 0);"><a href="../api/sqlite-c/">sqlite-c/</a> ; <a href="../api/hw_write/">hw_write/</a> ; <a href="../api/getOperator/">getOperator/</a> 	<span style="color: rgb(0, 0, 0);">- directories with libraries</span><br>		<a href="../api/wrapper/">wrapper/</a> 				<span style="color: rgb(0, 0, 0);">- an example tool which bases on libraries</span></span><br>More info:	in the <a href="../api/wrapper/libwrapper.cc">source code</a> ; FloPoCo doxygen API<br>Example usage:  <a href="../example/logs/6.log">example/logs/6.log</a> ; <a href="../example/logs/6.log_res">example/logs/6.log_res</a><br><br>Warning:        The wrapper tool is compiled under the <a href="../api/wrapper/build">api/wrapper/build</a>. <br>		It consumes quite a bit of space so you can remove it if not needed.<br><br></pre>
+
+<ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr style="width: 100%; height: 2px;">
+<pre><big><span style="font-weight: bold;"><span style="font-family: monospace;"><span style="font-family: mon;">Programming Languages</span></span>:<br></span></big><br>The tool is designed in a mind to be used as an circuit repository for reconfigurable computing.<br>The ideal example of the usage of the PivPav tool is for the software_2_hardware compilers (silicon compilers).<br>In a such system we have the software part consisting of the compiler and the hardware part which steers the FPGA CAD tool flow.<br>The software compilers are implemented with the help of C++ languages whereas the FPGA CAD tool flows are natively supported with the TCL scripting languages.<br>This is the case for most cases we know.<br><br>This is why the PivPav is a mixture of both.<br>It can be seen like this:<br>	hardware part  [TCL] &lt;-&gt; <span style="font-weight: bold;">PIVPAV</span> &lt;-&gt; [C++] software compiler<br><br>The core component here is the circuit library which needs to support both of these.<br>This is why the Sqlite3 has been chosen for this task.<br>Natively it supports the C++ and it was designed in mind for the TCL language.<br><br></pre>
+
+<hr style="width: 100%; height: 2px;">
+<script type="text/javascript">var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1574513-3");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+</html>

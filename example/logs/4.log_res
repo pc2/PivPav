@@ -1,0 +1,73 @@
+INSERT INTO power (
+                  m_id,                   t_p,                vint_t,                vint_i,                vint_p,
+                vint_p,                vaux_t,                vaux_i,                vaux_p,                vo25_t,
+                vo25_t,                vo25_i,                vo25_p,                 clk_t,                 dcm_t,
+                 dcm_t,                  io_t,               logic_t,             signals_t,              q_vint_t,
+              q_vint_t,              q_vint_i,              q_vint_p,              q_vaux_t,              q_vaux_i,
+              q_vaux_i,              q_vaux_p,              q_vo25_t,              q_vo25_i,              q_vo25_p,
+              q_vo25_p,             junc_temp,          ambient_temp,             case_temp,               theta_p,
+               theta_p 
+) VALUES(
+                     1,                893.62,                "1.20",              "500.37",              "600.45",
+              "600.45",                "2.50",              "115.52",              "288.80",                "2.50",
+                "2.50",                "1.75",                "4.38",                "7.06",                "0.00",
+                "0.00",               "43.87",                "0.00",                "0.00",                "1.20",
+                "1.20",              "494.43",              "593.31",                "2.50",              "115.52",
+              "115.52",              "288.80",                "2.50",                "1.75",                "4.38",
+                "4.38",                  "55",                  "50",                  "55",                     6,
+                     6 
+);
+INSERT INTO timing (
+                  m_id,                constr,             n_min_per,                 n_mem 
+) VALUES(
+                     1,                 "met",                 3.531,                   525 
+);
+INSERT INTO place_and_route (
+                  m_id,                n_bufg,                 n_i_l,            n_e_io_buf,          n_loc_io_buf,
+          n_loc_io_buf,             n_o_logic,               n_slice,              n_slicem,            opt_fl_eff,
+            opt_fl_eff,     opt_fl_placer_eff,         fl_cost_table,     opt_fl_router_eff,           t_tgan_real,
+           t_tgan_real,         t_placer_real,          t_placer_cpu,         t_router_real,          t_router_cpu,
+          t_router_cpu,                clknet,              resource,                locked,              n_fanout,
+              n_fanout,            t_new_skew,             t_max_del,      n_avg_conn_delay,       n_max_pin_delay,
+       n_max_pin_delay,n_avg_conn_delay_worst,   t_setup_worst_slack,          t_setup_best,           t_setup_err,
+           t_setup_err,           t_setup_scr,    t_hold_worst_slack,            t_hold_err,            t_hold_scr,
+            t_hold_scr,            t_par_real,             t_par_cpu,                 n_mem,               n_error,
+               n_error,                n_warn,                n_info 
+) VALUES(
+                     1,                     1,                     8,                    12,                     0,
+                     0,                     3,                     2,                     0,                "High",
+                "High",                  null,                  null,                "High",                     9,
+                     9,                    -1,                    -1,                    28,                    27,
+                    27,           "clk_BUFGP",       "BUFGCTRL_X0Y0",                  "No",                    11,
+                    11,                 0.009,                 2.677,                    -1,                    -1,
+                    -1,                    -1,                21.469,                 3.531,                     0,
+                     0,                     0,                 1.403,                     0,                     0,
+                     0,                    33,                    33,                   664,                     0,
+                     0,                     0,                     2 
+);
+INSERT INTO mapping (
+                  m_id,                 n_lut,               n_slice,               n_l_rel,             n_l_unrel,
+             n_l_unrel,              n_io_buf,                n_bufg,            n_bufgctrl,                n_gate,
+                n_gate,                 n_mem,                t_real,                 t_cpu 
+) VALUES(
+                     1,                     3,                     2,                     2,                     0,
+                     0,                    12,                     1,                    -1,                    -1,
+                    -1,                   928,                    33,                    32 
+);
+INSERT INTO synthesis (
+                  m_id,           opt_fl_goal,            opt_fl_eff,           opt_pwr_red,          fl_keep_hier,
+          fl_keep_hier,                  n_io,                  n_ff,             n_clk_buf,              n_io_buf,
+              n_io_buf,             n_min_per,                n_freq,               t_b_clk,       n_t_b_clk_lev_l,
+       n_t_b_clk_lev_l,             t_b_clk_l,         t_b_clk_route,      n_t_b_clk_l_proc,  n_t_b_clk_route_proc,
+  n_t_b_clk_route_proc,               t_a_clk,       n_t_a_clk_lev_l,             t_a_clk_l,         t_a_clk_route,
+         t_a_clk_route,      n_t_a_clk_l_proc,  n_t_a_clk_route_proc,                 t_cpu,                 n_mem,
+                 n_mem,               n_error,                n_warn,                n_info 
+) VALUES(
+                     1,               "Speed",                   "2",                 "YES",                  "NO",
+                  "NO",                    70,                    66,                     1,                    69,
+                    69,                    -1,                 4.317,                 1.347,                     1,
+                     1,                 0.987,                 0.360,                  73.3,                  26.7,
+                  26.7,                 0.360,                     0,                 0.360,                 0.000,
+                 0.000,                 100.0,                   0.0,                  3.70,                402384,
+                402384,                     0,                     4,                     0 
+);

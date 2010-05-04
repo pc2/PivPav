@@ -1,0 +1,74 @@
+mgrad@clowertown1 ~/Work/fccm/example
+$ (mkdir ../api/wrapper/build && cd ../api/wrapper/build && cmake .. && make) > logs/6.log_res 2>&1
+
+mgrad@clowertown1 ~/Work/fccm/example
+$ ../api/wrapper/build/wrapper -d gen_output/pivpav.db -r -x 1
+
+--------------------------------------------------------------------------------
+--                                add_wrapper
+-- This operator is part of the Infinite Virtual Library FloPoCoLib
+-- and is distributed under the terms of the GNU Lesser General Public Licence.
+-- Authors:
+--------------------------------------------------------------------------------
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use ieee.std_logic_unsigned.all;
+library work;
+
+entity add_wrapper is
+   port (
+         a : in  std_logic_vector(31 downto 0);
+         b : in  std_logic_vector(31 downto 0);
+         clk : in std_logic;
+         c_in : in std_logic;
+         ce : in std_logic;
+         s : out  std_logic_vector(0+0+2 downto 0)
+   );
+end entity;
+
+architecture arch of add_wrapper is
+   component add is
+      port (
+         a : in  std_logic_vector(31 downto 0);
+         b : in  std_logic_vector(31 downto 0);
+         clk : in std_logic;
+         c_in : in std_logic;
+         ce : in std_logic;
+         s : out  std_logic_vector(0+0+2 downto 0)
+   );
+   end component;
+
+signal a_sig, a_sig_d1 :  std_logic_vector(31 downto 0);
+signal b_sig, b_sig_d1 :  std_logic_vector(31 downto 0);
+signal c_in_sig, c_in_sig_d1 : std_logic;
+signal ce_sig, ce_sig_d1 : std_logic;
+signal s_sig :  std_logic_vector(2 downto 0);
+begin
+-- clkname = clk
+   process(clk)  begin
+      if clk'event and clk= '1' then
+         a_sig_d1 <=  a_sig;
+         b_sig_d1 <=  b_sig;
+         c_in_sig_d1 <=  c_in_sig;
+         ce_sig_d1 <=  ce_sig;
+      end if;
+   end process;
+
+-- wire: (*)entity input & output ports, with (*)signals
+a_sig <=  a;
+b_sig <=  b;
+c_in_sig <=  c_in;
+ce_sig <=  ce;
+s <= s_sig;      -- not registered for sequential operator
+
+-- instantiate wrapped component
+   u0: add  -- pipelineDepth=1
+      port map ( a => a_sig_d1,
+                 b => b_sig_d1,
+                 c_in => c_in_sig_d1,
+                 ce => ce_sig_d1,
+                 clk => clk,
+                 s => s_sig);
+end architecture;
+

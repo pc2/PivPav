@@ -1,0 +1,3 @@
+mgrad@clowertown1 ~/Work/fccm/example
+$ ../pivpav/library/create-schema.tcl | sqlite3 gen_output/pivpav.db
+
